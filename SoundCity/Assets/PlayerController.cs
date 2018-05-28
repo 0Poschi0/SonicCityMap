@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -24,6 +25,19 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
+        //meta
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Application.Quit();
+        }
+        if (Input.GetButtonDown("Restart"))
+        {
+            SceneManager.LoadScene(0);
+        }
+
+
         Vector2 inputVec = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
 
         
@@ -59,5 +73,8 @@ public class PlayerController : MonoBehaviour {
 
         if (inputVec.magnitude > 1) inputVec = inputVec.normalized;
         rb.velocity = inputVec * speed;
-	}
+
+
+
+    }
 }
